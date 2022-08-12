@@ -1,3 +1,763 @@
-/* Named with .scss extension because of live sass compiler */
-/* Once file is environment is started click "watch sass in bottom right */
-/* main.css is now created and will take everything we write in scss and compile it into regular css */
+//@at-root Named with .scss extension because of live sass compiler 
+// Once file is environment is started click "watch sass"
+// main.css is now created and will take everything we write in scss and compile it into regular css 
+// Start with mobile css design 
+
+// @import imports the "Poppins" font 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+//This allows us to change a primary color properties all in one place 
+/* Similar to defining a varibale and using it somewhere. See span nested in 
+.logo for an example */ 
+:root
+{
+    // Be sure to include the double dash before primary
+    --primary-color: #007AF3;
+
+}
+
+/* The selector can be two different things, the name of the html element (body, div
+img, nav, etc.) or a class (navbar, container, see html for index.html for more
+examples*/
+// Body tag is where you design the backround of the website 
+body // You can have multiple selectors , for example you can add , nav 
+{
+    // This is the property name followed by a semi-colon and the specify the
+    
+    background: #f2f2f2;
+
+    /* Browsers add margin to the edge of the website by default and setting 
+    margin to 0 removes that */
+    margin: 0;
+
+    /* fonts.google.com provides many fonts, but be sure to keep the amount 
+    of fonts used minimal so that the website doesn't load slowly */
+    font-family: "Poppins";
+
+}
+
+/* For organizational purposes we are going to cascade the direction in which
+the html document is occuring */
+
+/* This is how we edit class="navbar" in our html document which is linked to
+the first div */
+// The period "." means a class the "navbar" is the name
+.navbar
+{
+
+    // setting the color of the navbar 
+    background: white;
+
+    /* margin - affects everything outside of the element while padding - 
+    affects everything inside of the element  */
+    padding: 1em;
+
+    // Scss allows us to nest rulesets inside of eachother
+    /* because "logo" is child element to "navbar" we can insert the logo 
+    ruleset */
+    .logo
+    {
+        // Text decoration allows us to remove the underline
+        text-decoration: none;
+        // Boldens the word 
+        font-weight: bold;
+        // color changes color of text 
+        color: black;
+        // font-size changes font size 
+        font-size: 1.2em;
+
+        // an em unit is a relative value thats relative to the element 
+        // refer to cs units on w3schools.com for unit specifications 
+
+        /* Can make the span nested ruleset because its nested in the .logo 
+        and .navbar class sections */
+        span 
+        {
+            /* Here we are using the .root we created for the primary color
+            be sure to include the double dash */
+            color: var(--primary-color);
+
+        }
+
+    }
+    
+    // Linked to nav 
+    nav
+    {
+        // Hides the unordered list of navigation links 
+        // Hide and unhide to edit
+         display: none;
+
+    }
+
+    .container
+    {
+        // Flex is short for flexbox and is used to structure layouts 
+        display: flex;
+        /* Puts space in between elements top to bottom, turns into left to
+        right */
+        place-content: space-between;
+
+    }
+
+    /* This is linked to the open menu navigation graphic */
+    .mobile-menu
+    {
+        /* This makes it so that when the menu graphic is hovered over the 
+        cursor turns into a hand */
+        cursor: pointer;
+
+    }
+
+}
+
+/* Referencing all links by using by linking anchor (a) */
+a
+{
+
+    color: #444444;
+
+}
+
+/* Referencing all unordered lists by linking to unordered lists (ul) */
+ul
+{
+    /* Removes the bullets */ 
+    list-style-type: none;
+    /* Removing margin and padding */
+    margin: 0;
+    padding: 0;
+
+}
+
+section
+{
+    /* Creates space by adding padding between each section */
+    /* Could get specific by adding up to 4 specifications and corresponds 
+    clockwise */
+    padding: 5em 2em;
+
+}
+
+/* linking to the section with the class hero */
+.hero
+{
+    /* Aligning text in the center */
+    text-align: center;
+
+}
+
+/* Linking to the left side of the column */
+.left-col
+{
+    /* Linking to the text "IT'S NITTY & GRITTY */
+    .subhead
+    {
+        /* Converts the text to uppercase */
+        text-transform: uppercase;
+        /* Makes the text bold */
+        font-weight: bold;
+        color: gray;
+        /* Determines the spacing in between letters */ 
+        letter-spacing: .3em;
+
+    }
+
+    /* Using the sass tool that allows us to reference elements nested
+    in elements */
+    h1
+    {
+
+        font-size: 2.5em;
+        /* Determines space in between each line of text */
+        line-height: 1.3em;
+        /* Determing space at top */
+        margin-top: .2em;
+
+    }
+
+    .primary-cta
+    {
+
+        /* Makes the backround of the text the primary color */
+        background: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        /* top/bottom to left/right padding */
+        padding: .6em 1.3em;
+        font-size: 1.4em;
+        /* Smoothens the edge of the squares/ backround */
+        border-radius: 5em;
+        font-weight: bold;
+        /* allows to set a width and height on the element */
+        display: inline-block;
+        
+    }
+
+    .watch-video-cta
+    {
+        /* Starts on a new line, and takes up the whole width */
+        display: block;
+        /* Creates margin space only on top (applies with padding as well) */
+        margin-top: 1em;
+
+        /* In order to create white space between the image and the
+        "Watch a Video" text, were going to add margin to the img element */
+        img
+        {
+
+            margin-right: .5em;
+
+        }
+
+    }
+
+}
+
+.hero-image
+{
+    /* Changes the size of the image */ 
+    width: 70%;
+    margin-top: 3em;
+
+}
+
+section.features-section
+{
+
+    background: #20272E;
+    /* Text color to white */
+    color: white;
+
+}
+
+ul.features-list
+{
+
+    margin: 0;
+    padding-left: .1em;
+    
+    /* Bottom two lines will adjust the unordered list to fit the size of
+    the screen */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem,1fr));
+
+    li
+    {
+
+        font-size: 1.1em;
+        margin-bottom: 1em;
+        margin-left: 2em;
+        // Allows absolute position to be used on this element
+        position: relative;
+
+        /* Use the sudo selector &:before to (only specific to scss) 
+        and transpiles in css to li:before */
+        // This allows us to put the customized checks before the list items
+        &:before
+        {
+
+            // Set the content to empty
+            content: "";
+            /* Making a position absolute allows the positioning of an element
+            within the document */
+            position: absolute;
+            /* Can use left because of absolute position that is relative 
+            to its parent element containing relative position*/
+            left: -2em;
+            width: 20px;
+            height:20px;
+            background-image: url("/images/bullet.svg");
+            // Contain will unbreak the image by containing the image
+            background-size: contain;
+            margin-right: .5em;
+
+        }
+
+    }
+    
+}
+
+// Hiding the picture on mobile version
+.features-section img
+{
+
+    display: none;
+
+}
+
+.testimonials-section
+{
+
+    background: var(--primary-color);
+    // Making text color white
+    color: white;
+
+
+    li
+    {
+        // Gives the list items a different shade
+        background: #006BD6;
+        // Centers items (img included)
+        text-align: center;
+        padding: 2em 1em;
+        width: 80%;
+        // Auto in this case centers the left and the right
+        margin: 0 auto 5em auto;
+        // Rounds corners
+        border-radius: 1em;
+            
+        img
+        {
+            // Adjusting image size
+            width: 5em;
+            height: 5em;
+            // Two lines below create a circular border around the profile picture
+            border: 5px solid #006BD6;
+            border-radius: 50%;
+            // Aligning the profile pictue with the top of the shaded box
+            margin-top: -4.5em;
+
+        }
+
+    }
+    
+
+}
+
+h2
+{
+
+    font-size: 2em;
+
+}
+
+label
+{
+    // Giving name its new line and having take up all the space
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: .5em;
+
+}
+
+input, textarea
+{
+
+    width: 100%;
+    padding: .8em;
+    margin-bottom: 1em;
+    border-radius: .3em;
+    // To remove the darkness from the input and button 
+    border: 1px solid gray;
+    // Fits the boxes perfectly
+    box-sizing: border-box;
+
+}
+
+input[type="submit"]
+{
+
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    border: none;
+    // Used to push the map away
+    margin-bottom: 5em;
+    border-radius: 5em;
+    display: inline-block;
+    padding: .8em 2em;
+    // Need width unset for inline-block for padding to take proper effect
+    width: unset;
+    cursor: pointer;
+}
+
+iframe
+{
+    // iframe was origionally too big & using width allows us to fix that
+    width: 100%;
+    height: 300px;
+
+}
+
+nav.menu-btn
+{
+    // Displays navigation
+    display: block;
+
+}
+
+nav
+{
+
+    position: fixed;
+    // Can be placed on properties / elements using position fixed & absolute
+    // Makes the menu sit on top of everything
+    z-index: 999;
+    width: 66%;
+    // Pushes the items to the right
+    right: 0;
+    // Pushes the items to the very top of doc
+    top: 0;
+    background: #20272E;
+    /* 100 viewport height means that its relative to the height of the 
+    device of the browser that your looking at */
+    height: 100vh;
+    padding: 1em;
+
+    ul.primary-nav
+    {
+
+        margin-top: 5em;
+
+    }
+
+    li
+    {
+
+        a
+        {
+
+            color: white;
+            text-decoration: none;
+            /* Must put display block on a / hyperlink elements if you want
+            to add padding & margins etc */
+            display: block;
+            padding: .5em;
+            font-size: 1.3em;
+            text-align: right;
+
+            /* *** IMPORTANT *** This makes it so that when you hover over
+            items, the items turn bold when hovered over*/
+            &:hover
+            {
+
+                font-weight: bold;
+
+            }
+        }
+
+    }
+
+}
+
+.mobile-menu-exit
+{
+    // to push items rather than text use float
+    float: right;
+    margin: .5em;
+    cursor: pointer;
+
+}
+
+// We will now use media queries to make the website responsive
+// Use f12 to see coordinates of when a web page should show all items
+/* Look at the width value in the and decide at which point the design should
+start to change */
+
+// Any rulesets below will only apply when width is at least 620px
+@media only screen and (min-width: 620px)
+{
+    .logo
+    {
+
+        float: left;
+
+    }
+    // Hides the hamburger navigation panel
+    .mobile-menu, .mobile-menu-exit
+    {
+
+        display: none;
+
+    }
+
+    /* That says "make all .containers within .navbar display grid" */
+    .navbar .container
+    {
+
+        display: grid;
+        // 180px for logo and auto means take up the rest of the space
+        grid-template-columns: 180px auto;
+        // Seperates the primary nav from secondary nav
+        justify-content: unset;
+
+    }
+
+    .navbar nav
+    {
+
+        display: flex;
+        // Puts space in between the unordered lists of navigation
+        justify-content: space-between;
+        // Removes the background that stretches the page 
+        background: none;
+        // Have to change it to unset because it was fixed
+        position: unset;
+        // Change to auto so that it isn't all white
+        height: auto;
+        width: 100%;
+        padding: 0;
+
+        ul
+        {
+
+            display: flex;
+
+
+        }
+
+        a
+        {
+
+            color: black;
+            font-size: 1em;
+            padding: .1em 1em;
+
+        }
+
+        ul.primary-nav
+        {
+            // Lines the primary nav up with secondary nav
+            margin: 0;
+
+        }
+
+        // Making "Home" list item bold
+        .current 
+        {
+
+            font-weight: bold;
+    
+        }
+
+        // Make sure to specify the element thats being colored (in this case a)
+        .go-premium-cta a
+        {
+
+            color: var(--primary-color);
+            border: 3px solid var(--primary-color);
+            border-radius: 5em;
+            font-weight: bold;
+            margin-top: -.2em;
+
+            // Creating the hover color difference
+            &:hover
+            {
+
+                background: var(--primary-color);
+                color: white;
+
+            }
+
+        }
+
+    }
+
+}
+
+@media only screen and (min-width: 1080px)
+{
+
+    .container
+    {
+        // Two lines below centers everything at 777px
+        width: 1080px;
+        margin: 0 auto;
+
+    }
+
+    // Adjust section at 777px
+    section
+    {
+
+        padding: 10em 4em;
+
+    }
+
+    // Creates space between text & the image in the hero section
+    .hero .container
+    {
+
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+       
+       
+        
+        .left-col
+        {
+
+            margin: 3em 3em 0 5em;
+         
+            h1
+            {
+
+                font-size: 3em;
+                width: 90%;
+
+            }
+
+        }
+
+    }
+
+    .hero-image
+    {
+        // Making the check notebook image smaller and closer to text
+        width: 30%;
+        margin-right: 8em;
+
+    }
+
+    .hero-cta
+    {
+        // Put "Watch a Video to the left instead of under
+        display: flex;
+
+    }
+
+    .primary-cta
+    {
+
+        margin-right: 1em;
+       
+
+    }
+
+    /* Make sure to specify "ul." before ".features-list" to ensure
+    display: block; works */
+    ul.features-list
+    {
+
+       
+        display: block;
+        margin-left: 5em;
+        margin-top: -3em;
+        margin-bottom: -3em;
+        
+        li
+        {
+
+            font-size: 1.4em;
+
+            &:before
+            {
+                // Adjusts the size of the checkmarks
+                width: 30px;
+                height: 30px;
+
+            }
+
+        }
+
+    }
+
+    .features-section
+    {
+        // Notes sequence of position in parent & child element
+        position: relative;
+
+        img
+        {
+            
+            position: absolute;
+            display: block;
+            width: 350px;
+            // *** IMPORTANT *** Below demonstrates how to align perfectly to the right
+            right: 0;
+            // Moves the picture upward
+            bottom: -2em;
+
+        }
+
+    }
+
+    .testimonials-section ul
+    {
+
+        display: flex;
+        
+        // Creating space between the block quotes/ List items
+        li
+        {
+
+            margin: 0 1em;
+
+        }
+
+    }
+
+    .contact-section
+    {
+
+        position: relative;
+
+        .container
+        {
+
+            display: flex;
+
+        }
+
+    }
+
+    .contact-right
+    {
+
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 45%;
+        // See iframe comment below
+        height: 100%;
+
+        iframe
+        {
+            // Iframe height must be set to 100% as well
+            height: 100%;
+
+        }
+
+    }
+
+}
+
+// Creating design block and dots
+@media  only screen and (min-width: 1080px)
+{
+
+    .features-section
+    {
+        // Block
+        &:before
+        {
+
+            content: "";
+            position: absolute;
+            width: 10%;
+            height: 20em;
+            background: var(--primary-color);
+            left: 0;
+            top: -4em;
+
+        }
+
+        // Dots
+        &:after
+        {
+
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 20em;
+            background: url("/images/dots.svg") no-repeat;
+            left: 4.5;
+            top: 2em;
+
+        }
+
+    }
+    
+}
